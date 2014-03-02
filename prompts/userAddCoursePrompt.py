@@ -13,6 +13,8 @@ def searchCourses(courses):
         return courses
 
 def narrowCriteria(courses):
+##    print("Select Criteria")
+##    print("1 - Course Number")
     raise NotImplementedError
 
 def displayCourses(courses, selectedCourses):

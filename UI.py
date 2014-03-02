@@ -23,7 +23,7 @@ def bugReport(error):
 
     reportFile = open("bugReport.txt", "a")
     try:
-        reportFile.write(report)
+        reportFile.write("\n" + report + "\n")
         raise error
     finally:
         reportFile.close()
@@ -100,7 +100,10 @@ class App:
         print("6 -     Load Schedule          ")
         print("7 -     Calendar View          ")
         print("8 -    Replace Course          ")
+        print("9 - Average Course Length      ")
+        print("10-  Average Course Size       ")
         print("x -      Exit Course           ")
+        print("-------------------------------")
         resp = raw_input(": ")
         
         try:
@@ -117,6 +120,7 @@ class App:
                 courses = self.userRemoveCourse()
                 if courses:
                     self.courses = courses
+                    
             elif resp == "3":
                 # Save
                 self.userSaveCourses()
@@ -141,8 +145,17 @@ class App:
                 # Replace Course
                 self.replaceCourse()
 
+            elif resp == "9":
+                # Average Course Length
+                self.getAverageCourseLength()
+
+            elif resp == "10":
+                # Average Course Size
+                self.getAverageCourseSize()
+
             else:
                 self.invalid(resp)
+                
         except NotImplementedError:
             print("*_* Feature Not Implemented In This Version *_*")
 
@@ -178,6 +191,12 @@ class App:
 
     def displayCalendar(self):
         displayCalendar(self.courses)
+
+    def getAverageCourseLength(self):
+        averageCourseLength()
+
+    def getAverageCourseSize(self):
+        averageCourseSize()
 
     def invalid(self, response):
         print("{} is not a valid entry.".format(response))
